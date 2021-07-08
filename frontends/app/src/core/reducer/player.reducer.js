@@ -94,7 +94,7 @@ const playerState = (state = INITIAL_STATE, action) => {
           ...state.loaded,
           createPlayer: true,
         },
-        players: [...state.players, ...payload],
+        players: [...state.players, payload],
       };
     }
 

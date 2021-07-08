@@ -9,6 +9,8 @@ import { createStore, applyMiddleware } from "redux";
 import rootReducer from "./core/reducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { createEpicMiddleware } from "redux-observable";
+import { BrowserRouter } from "react-router-dom";
+import history from "./helpers/history";
 
 import epics from "./core/epics";
 import AppContainer from "./containers/AppContainer/AppContainer";
@@ -23,11 +25,13 @@ export const store = createStore(
 epicMiddleware.run(epics);
 
 ReactDOM.render(
-  <Provider store={store} context={ReactReduxContext}>
-    <AppContainer>
-      <App />
-    </AppContainer>
-  </Provider>,
+  <BrowserRouter history={history}>
+    <Provider store={store} context={ReactReduxContext}>
+      <AppContainer>
+        <App />
+      </AppContainer>
+    </Provider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 

@@ -1,24 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Layout, Menu } from "antd";
+import { Link } from "react-router-dom";
+import { RenderRoutes } from "./routes/routes";
+
+const { Header, Content, Footer } = Layout;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <Layout>
+        <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
+          <div className="logo" />
+          <Menu theme="dark" mode="horizontal">
+            <Menu.Item key="1">
+              Home
+              <Link to="/"></Link>
+            </Menu.Item>
+            <Menu.Item key="2">
+              Results
+              <Link to="/results"></Link>
+            </Menu.Item>
+          </Menu>
+        </Header>
+        <Content
+          className="site-layout"
+          style={{ padding: "0 50px", marginTop: 64 }}
         >
-          Learn React
-        </a>
-      </header>
+          <div
+            className="site-layout-background"
+            style={{ padding: 24, minHeight: 380 }}
+          >
+            <RenderRoutes />
+          </div>
+        </Content>
+        <Footer style={{ textAlign: "center" }}>Kelly Crowther</Footer>
+      </Layout>
     </div>
   );
 }
