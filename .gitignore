@@ -110,6 +110,4 @@ coverage
 /backend/services/bff/.tool-versions
 /test/packaging/cypress/screenshots
 
-/backend/node_modules
-
-/frontends/app/node_modules
+node_modules/
