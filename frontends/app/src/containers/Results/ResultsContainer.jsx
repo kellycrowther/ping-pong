@@ -1,10 +1,9 @@
 import { connect } from "react-redux";
 import { compose, lifecycle } from "recompose";
-
-import App from "../../App";
-
-import { listPlayers } from "../../core/actions";
+import { createPlayer } from "../../core/actions";
 import { getPlayersSelector } from "../../core/selectors/player.selectors";
+
+import { Results } from "./Results";
 
 export default compose(
   connect(
@@ -12,12 +11,8 @@ export default compose(
       players: getPlayersSelector(state),
     }),
     (dispatch) => ({
-      listPlayers: () => dispatch(listPlayers()),
+      createPlayer: (payload) => dispatch(createPlayer(payload)),
     })
   ),
-  lifecycle({
-    componentDidMount() {
-      this.props.listPlayers();
-    },
-  })
-)(App);
+  lifecycle({})
+)(Results);

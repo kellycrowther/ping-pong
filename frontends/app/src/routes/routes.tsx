@@ -1,6 +1,7 @@
 import { Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "../components/PrivateRoute/PrivateRoute";
 import HomeContainer from "../containers/Home/HomeContainer";
+import ResultsContainer from "../containers/Results/ResultsContainer";
 
 const routes = [
   {
@@ -15,7 +16,7 @@ const routes = [
     key: "results",
     exact: true,
     isPrivate: false,
-    component: <div>Hello Results</div>,
+    component: <ResultsContainer />,
   },
 ];
 
