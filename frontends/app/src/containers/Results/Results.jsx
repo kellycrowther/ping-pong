@@ -107,17 +107,13 @@ const columns = [
   },
 ];
 
-export const Results = ({ createPlayer, listPlayers, players }) => {
+export const Results = ({ listPlayers, players }) => {
   return (
     <>
       <Row justify="center">
         <Col xs={24} style={{ textAlign: "center" }}>
           <Title>Results</Title>
-          <SaveResults
-            createPlayer={createPlayer}
-            listPlayers={listPlayers}
-            players={players}
-          />
+          <SaveResults listPlayers={listPlayers} players={players} />
           <Table dataSource={matches} columns={columns} rowKey="id" />;
         </Col>
       </Row>
