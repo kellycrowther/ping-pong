@@ -1,36 +1,43 @@
-import * as locationService from "../services/player.service";
+import * as playerService from "../services/player.service";
 
 export function create(req, res, next) {
-  locationService
+  playerService
     .create(req.body)
     .then((location) => res.json(location))
     .catch(next);
 }
 
 export function getAll(req, res, next) {
-  locationService
+  playerService
     .getAll()
     .then((locations) => res.json(locations))
     .catch(next);
 }
 
 export function getById(req, res, next) {
-  locationService
+  playerService
     .getById(req.params.id)
     .then((location) => res.json(location))
     .catch(next);
 }
 
 export function update(req, res, next) {
-  locationService
+  playerService
     .update(req.params.id, req.body)
     .then((location) => res.json(location))
     .catch(next);
 }
 
 export function _delete(req, res, next) {
-  locationService
+  playerService
     ._delete(req.params.id)
-    .then(() => res.json({ message: "Location deleted successfully" }))
+    .then(() => res.json({ message: "Player deleted successfully" }))
+    .catch(next);
+}
+
+export function getAllRanked(req, res, next) {
+  playerService
+    .getAllRanked()
+    .then((players) => res.json(players))
     .catch(next);
 }

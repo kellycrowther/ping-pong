@@ -4,16 +4,20 @@ const INITIAL_STATE = {
   loading: {
     listPlayers: false,
     createPlayer: false,
+    rankedPlayers: false,
   },
   loaded: {
     listPlayers: false,
     createPlayer: false,
+    rankedPlayers: false,
   },
   error: {
     listPlayers: null,
     createPlayer: null,
+    rankedPlayers: false,
   },
   players: [],
+  rankedPlayers: [],
 };
 
 const playerState = (state = INITIAL_STATE, action) => {
@@ -113,6 +117,56 @@ const playerState = (state = INITIAL_STATE, action) => {
         error: {
           ...state.error,
           createPlayer: { ...payload },
+        },
+      };
+    }
+
+    case PlayerActions.LIST_RANKED_PLAYERS: {
+      return {
+        ...state,
+        loading: {
+          ...state.loading,
+          rankedPlayers: true,
+        },
+        loaded: {
+          ...state.loaded,
+          rankedPlayers: false,
+        },
+      };
+    }
+
+    case PlayerActions.LIST_RANKED_PLAYERS_SUCCESS: {
+      const { payload } = action;
+
+      return {
+        ...state,
+        loading: {
+          ...state.loading,
+          rankedPlayers: false,
+        },
+        loaded: {
+          ...state.loaded,
+          rankedPlayers: true,
+        },
+        rankedPlayers: [...payload],
+      };
+    }
+
+    case PlayerActions.LIST_RANKED_PLAYERS_FAIL: {
+      const { payload } = action;
+      return {
+        ...state,
+        loading: {
+          ...state.loading,
+          rankedPlayers: false,
+        },
+        loaded: {
+          ...state.loaded,
+          rankedPlayers: false,
+        },
+        error: {
+          ...state.error,
+          rankedPlayers: { ...payload },
         },
       };
     }

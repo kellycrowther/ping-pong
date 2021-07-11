@@ -1,15 +1,23 @@
 import { connect } from "react-redux";
 import { compose, lifecycle } from "recompose";
-import { createPlayer } from "../../core/actions";
+import { createPlayer, listRankedPlayers } from "../../core/actions";
+import { getRankedPlayersSelector } from "../../core/selectors/player.selectors";
 
 import { Home } from "./Home";
 
 export default compose(
   connect(
-    (state) => ({}),
+    (state) => ({
+      rankedPlayers: getRankedPlayersSelector(state),
+    }),
     (dispatch) => ({
       createPlayer: (payload) => dispatch(createPlayer(payload)),
+      listRankedPlayers: () => dispatch(listRankedPlayers()),
     })
   ),
-  lifecycle({})
+  lifecycle({
+    componentDidMount() {
+      this.props.listRankedPlayers();
+    },
+  })
 )(Home);

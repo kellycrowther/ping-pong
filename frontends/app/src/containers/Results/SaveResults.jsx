@@ -4,6 +4,13 @@ import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
+/**
+ * TODO: validation for form
+ *  - games to maximum of 11 points
+ *  - disable selecting the same player for player 1 and player 2
+ * TODO: signify who won the match
+ */
+
 export const SaveResults = ({ players, createMatch }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 

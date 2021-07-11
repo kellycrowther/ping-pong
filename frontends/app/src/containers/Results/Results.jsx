@@ -14,7 +14,7 @@ const columns = [
         <Row>
           {row.results.map((result, index) => (
             <Col key={result.id} span={24}>
-              {result.name} - {result.id.slice(10)}
+              {result.player.name}
             </Col>
           ))}
         </Row>
@@ -58,6 +58,7 @@ const columns = [
           {row.results.map((result, index) => {
             result.scores.sort((a, b) => a.order - b.order);
             return result.scores.map((score) => (
+              // TODO: span breaks at 5 games
               <Col key={score.id} span={24 / result.scores.length}>
                 {score.points}
               </Col>
@@ -83,7 +84,7 @@ export const Results = ({ listPlayers, players, matches, createMatch }) => {
             players={players}
             createMatch={createMatch}
           />
-          <Table dataSource={matches} columns={columns} rowKey="id" />;
+          <Table dataSource={matches} columns={columns} rowKey="id" />
         </Col>
       </Row>
     </>

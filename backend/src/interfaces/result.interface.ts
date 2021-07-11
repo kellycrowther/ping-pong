@@ -3,7 +3,7 @@ import { ScoreAttributes } from "./score.interface";
 
 export interface ResultsAttributes extends Model {
   id: string;
-  player: string;
+  playerId: string;
   gamesWon: number;
   scores: Array<ScoreAttributes>;
 }

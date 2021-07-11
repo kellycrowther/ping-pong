@@ -67,6 +67,10 @@ async function createInclude() {
           model: db.Score,
           as: "scores",
         },
+        {
+          model: db.Player,
+          as: "player",
+        },
       ],
     },
   ];

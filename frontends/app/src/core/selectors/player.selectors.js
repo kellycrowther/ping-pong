@@ -22,3 +22,8 @@ export const getCreatePlayerLoading = createSelector(
     return loading.createPlayer;
   }
 );
+
+export const getRankedPlayersSelector = createSelector(
+  [getPlayerState],
+  (playerState) => playerState.rankedPlayers
+);

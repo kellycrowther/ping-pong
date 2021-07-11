@@ -26,6 +26,21 @@ export async function _delete(id) {
   await location.destroy();
 }
 
+/**
+ * TODO: Should search for who won the most matches, then look at total games won to determine ranking
+ */
+export async function getAllRanked() {
+  const [results, metadata] = await db.sequelize.query(
+    `SELECT DISTINCT playerId, Players.name, SUM(gamesWon) totalGamesWon 
+      FROM Results
+      INNER JOIN Players On Players.id = Results.playerId
+      GROUP BY playerId 
+      ORDER BY SUM(gamesWon) DESC`
+  );
+
+  return results;
+}
+
 // helpers
 async function getPlayer(id) {
   const player = await db.Player.findByPk(id);

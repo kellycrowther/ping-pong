@@ -1,10 +1,33 @@
 import { useState } from "react";
-import { Typography, Row, Col, Modal, Button, Input, Form } from "antd";
+import { Typography, Row, Col, Modal, Button, Input, Form, Table } from "antd";
+import { useEffect } from "react";
 
 const { Title } = Typography;
 
-export const Home = ({ createPlayer }) => {
+const columns = [
+  {
+    title: "Rank",
+    dataIndex: "rank",
+    key: "rank",
+    width: "5%",
+  },
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+    width: "15%",
+  },
+  {
+    title: "Games Won",
+    dataIndex: "totalGamesWon",
+    key: "gamesWon",
+    width: "15%",
+  },
+];
+
+export const Home = ({ createPlayer, rankedPlayers }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [players, setPlayers] = useState([]);
   const [name, setName] = useState("");
 
   const handleOk = () => {
@@ -16,6 +39,14 @@ export const Home = ({ createPlayer }) => {
     setName("");
     setIsModalVisible(false);
   };
+
+  useEffect(() => {
+    const players = rankedPlayers.map((player, index) => ({
+      ...player,
+      rank: index + 1,
+    }));
+    setPlayers(players);
+  }, [rankedPlayers]);
 
   return (
     <>
@@ -62,6 +93,19 @@ export const Home = ({ createPlayer }) => {
           </Modal>
         </Col>
       </Row>
+
+      <>
+        <Row justify="center">
+          <Col xs={24} style={{ textAlign: "center" }}>
+            <Table
+              title={() => "Ranked Results"}
+              dataSource={players}
+              columns={columns}
+              rowKey="rank"
+            />
+          </Col>
+        </Row>
+      </>
     </>
   );
 };

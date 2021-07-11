@@ -9,7 +9,11 @@ import {
   update,
   create,
   _delete,
+  getAllRanked,
 } from "../controllers/player.controller";
+
+// alias route
+router.get("/ranked", getAllRanked);
 
 router.get("/", getAll);
 router.get("/:id", getById);

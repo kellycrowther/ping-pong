@@ -6,6 +6,10 @@ export const PlayerActions = {
   CREATE_PLAYER: "[Player] Create Player",
   CREATE_PLAYER_SUCCESS: "[Player] Create Player Success",
   CREATE_PLAYER_FAIL: "[Player] Create Player Fail",
+
+  LIST_RANKED_PLAYERS: "[Player] List Ranked Players",
+  LIST_RANKED_PLAYERS_SUCCESS: "[Player] List Ranked Players Success",
+  LIST_RANKED_PLAYERS_FAIL: "[Player] List Ranked Players Fail",
 };
 
 export const listPlayers = (payload) => ({
@@ -35,5 +39,20 @@ export const createPlayerSuccess = (payload) => ({
 
 export const createPlayerFail = (payload) => ({
   type: PlayerActions.CREATE_PLAYER_FAIL,
+  payload,
+});
+
+export const listRankedPlayers = (payload) => ({
+  type: PlayerActions.LIST_RANKED_PLAYERS,
+  payload,
+});
+
+export const listRankedPlayersSuccess = (payload) => ({
+  type: PlayerActions.LIST_RANKED_PLAYERS_SUCCESS,
+  payload,
+});
+
+export const listRankedPlayersFail = (payload) => ({
+  type: PlayerActions.LIST_RANKED_PLAYERS_FAIL,
   payload,
 });

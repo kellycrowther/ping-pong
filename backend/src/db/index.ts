@@ -15,6 +15,7 @@ interface IDatabase {
   Match: MatchModelStatic;
   Result: ResultsModelStatic;
   Score: ScoreModelStatic;
+  sequelize: Sequelize;
 }
 
 let db: IDatabase = <IDatabase>{};
@@ -57,7 +58,11 @@ function makeDb(sequelize): IDatabase {
   });
   Score.belongsTo(Result, { foreignKey: "resultId" });
 
+  Player.hasMany(Result, { foreignKey: "playerId" });
+  Result.belongsTo(Player, { foreignKey: "playerId", as: "player" });
+
   // add to db
+  db.sequelize = sequelize;
   db.Player = Player;
   db.Match = Match;
   db.Result = Result;

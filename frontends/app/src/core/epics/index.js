@@ -6,6 +6,7 @@ import {
   createPlayerEpic,
   createPlayerSuccessEpic,
   createPlayerFailEpic,
+  listRankedPlayersEpic,
 } from "./player.epics";
 
 import {
@@ -24,5 +25,6 @@ export default combineEpics(
   createMatchEpic,
   createMatchSuccessEpic,
   createMatchFailEpic,
-  listMatchesEpic
+  listMatchesEpic,
+  listRankedPlayersEpic
 );

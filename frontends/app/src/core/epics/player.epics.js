@@ -8,6 +8,8 @@ import {
   listPlayerSuccess,
   createPlayerFail,
   createPlayerSuccess,
+  listRankedPlayersSuccess,
+  listRankedPlayersFail,
 } from "../actions";
 import { axiosInstance } from "../provider/axiosInstance";
 import { notification } from "antd";
@@ -69,6 +71,26 @@ export const createPlayerFailEpic = (actions$, dispatch) => {
         message: "Player Not Saved!",
       });
       return of();
+    })
+  );
+};
+
+export const listRankedPlayersEpic = (actions$) => {
+  return actions$.pipe(
+    ofType(PlayerActions.LIST_RANKED_PLAYERS),
+    mergeMap(({ payload }) => {
+      return axiosInstance
+        .request({
+          url: "/players/ranked",
+          method: "GET",
+        })
+        .pipe(
+          map((res) => listRankedPlayersSuccess(res.data)),
+          takeUntil(
+            actions$.pipe(ofType(PlayerActions.LIST_RANKED_PLAYERS_SUCCESS))
+          ),
+          catchError((error) => of(listRankedPlayersFail(error)))
+        );
     })
   );
 };
