@@ -29,8 +29,7 @@ export const SaveResults = ({ players, createMatch }) => {
           }, 0);
         });
 
-        console.info("values: ", values);
-        // form.resetFields();
+        form.resetFields();
         createMatch(values);
         setIsModalVisible(false);
       })

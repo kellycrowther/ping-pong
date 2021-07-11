@@ -73,7 +73,6 @@ const columns = [
 ];
 
 export const Results = ({ listPlayers, players, matches, createMatch }) => {
-  console.info("MATCHES: ", matches);
   return (
     <>
       <Row justify="center">
