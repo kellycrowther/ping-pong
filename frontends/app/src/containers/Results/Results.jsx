@@ -3,63 +3,24 @@ import { SaveResults } from "./SaveResults";
 
 const { Title } = Typography;
 
-const matches = [
-  {
-    id: "match-1",
-    results: [
-      {
-        player: "1",
-        gamesWon: 3,
-        scores: [
-          {
-            gameId: "8",
-            points: 3,
-            order: 2,
-          },
-          {
-            gameId: "9",
-            points: 2,
-            order: 1,
-          },
-        ],
-      },
-      {
-        player: "2",
-        gamesWon: 2,
-        scores: [
-          {
-            gameId: "9",
-            points: 9,
-            order: 1,
-          },
-          {
-            gameId: "8",
-            points: 8,
-            order: 2,
-          },
-        ],
-      },
-    ],
-  },
-];
-
 const columns = [
   {
     title: "Name",
     dataIndex: "name",
     key: "name",
+    width: "40%",
     render: (text, row, index) => {
       const title = () => (
         <Row>
           {row.results.map((result, index) => (
-            <Col key={result.player} span={24}>
-              {result.player}
+            <Col key={result.id} span={24}>
+              {result.name} - {result.id.slice(10)}
             </Col>
           ))}
         </Row>
       );
       return {
-        children: title(),
+        children: row.results ? title() : null,
       };
     },
   },
@@ -67,6 +28,7 @@ const columns = [
     title: "Games Won",
     dataIndex: "games-won",
     key: "games-won",
+    width: "30%",
     render: (text, row, index) => {
       const scores = () => (
         <Row>
@@ -78,7 +40,7 @@ const columns = [
         </Row>
       );
       return {
-        children: scores(),
+        children: row.results ? scores() : null,
       };
     },
   },
@@ -86,10 +48,13 @@ const columns = [
     title: "Game Scores",
     dataIndex: "scores",
     key: "scores",
+    width: "30%",
     render: (text, row, index) => {
       const gamesResults = () => (
         <Row>
-          {/* This needs to be re-thought and it probably starts with the data model */}
+          {/* Relying on order needs to be re-thought and it probably starts with the data model
+              Consider creating a gameId client side to pair the games when displaying
+          */}
           {row.results.map((result, index) => {
             result.scores.sort((a, b) => a.order - b.order);
             return result.scores.map((score) => (
@@ -101,19 +66,24 @@ const columns = [
         </Row>
       );
       return {
-        children: gamesResults(),
+        children: row.results ? gamesResults() : null,
       };
     },
   },
 ];
 
-export const Results = ({ listPlayers, players }) => {
+export const Results = ({ listPlayers, players, matches, createMatch }) => {
+  console.info("MATCHES: ", matches);
   return (
     <>
       <Row justify="center">
         <Col xs={24} style={{ textAlign: "center" }}>
           <Title>Results</Title>
-          <SaveResults listPlayers={listPlayers} players={players} />
+          <SaveResults
+            listPlayers={listPlayers}
+            players={players}
+            createMatch={createMatch}
+          />
           <Table dataSource={matches} columns={columns} rowKey="id" />;
         </Col>
       </Row>

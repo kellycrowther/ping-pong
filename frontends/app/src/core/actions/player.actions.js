@@ -34,6 +34,6 @@ export const createPlayerSuccess = (payload) => ({
 });
 
 export const createPlayerFail = (payload) => ({
-  type: PlayerActions.CREATE_PLAYER_SUCCESS_FAIL,
+  type: PlayerActions.CREATE_PLAYER_FAIL,
   payload,
 });

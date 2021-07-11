@@ -8,10 +8,21 @@ import {
   createPlayerFailEpic,
 } from "./player.epics";
 
+import {
+  createMatchEpic,
+  createMatchSuccessEpic,
+  createMatchFailEpic,
+  listMatchesEpic,
+} from "./match.epics";
+
 // Root epic
 export default combineEpics(
   listPlayersEpic,
   createPlayerEpic,
   createPlayerSuccessEpic,
-  createPlayerFailEpic
+  createPlayerFailEpic,
+  createMatchEpic,
+  createMatchSuccessEpic,
+  createMatchFailEpic,
+  listMatchesEpic
 );

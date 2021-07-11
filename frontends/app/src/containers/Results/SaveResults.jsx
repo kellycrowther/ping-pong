@@ -4,7 +4,7 @@ import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
-export const SaveResults = ({ players }) => {
+export const SaveResults = ({ players, createMatch }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const [form] = Form.useForm();
@@ -31,7 +31,7 @@ export const SaveResults = ({ players }) => {
 
         console.info("values: ", values);
         // form.resetFields();
-        // onCreate(values);
+        createMatch(values);
         setIsModalVisible(false);
       })
       .catch((info) => {

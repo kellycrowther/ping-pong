@@ -41,8 +41,8 @@ export async function createScore(params, resultId?: string) {
     resultId,
   };
 
-  console.info("SCORE params: ", params);
-  const scoreInstance = await db.Score.create(params);
+  const { scores } = params;
+  const scoreInstance = await db.Score.create(scores);
 
   return await getScore(scoreInstance.id);
 }
