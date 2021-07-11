@@ -33,7 +33,7 @@ const columns = [
       const scores = () => (
         <Row>
           {row.results.map((result, index) => (
-            <Col key={result.gamesWon} span={24}>
+            <Col key={result.id} span={24}>
               {result.gamesWon}
             </Col>
           ))}
@@ -58,7 +58,7 @@ const columns = [
           {row.results.map((result, index) => {
             result.scores.sort((a, b) => a.order - b.order);
             return result.scores.map((score) => (
-              <Col key={score.points} span={24 / result.scores.length}>
+              <Col key={score.id} span={24 / result.scores.length}>
                 {score.points}
               </Col>
             ));
