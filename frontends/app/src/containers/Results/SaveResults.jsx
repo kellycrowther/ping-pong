@@ -53,7 +53,11 @@ export const SaveResults = ({ players, createMatch }) => {
     <>
       <Row>
         <Col xs={24} style={{ textAlign: "left", padding: "1rem 0" }}>
-          <Button type="primary" onClick={() => setIsModalVisible(true)}>
+          <Button
+            type="primary"
+            onClick={() => setIsModalVisible(true)}
+            data-testid="save-results-btn"
+          >
             Record Results
           </Button>
           <Modal

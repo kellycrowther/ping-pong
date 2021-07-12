@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Typography, Row, Col, Table } from "antd";
 import { SaveResults } from "./SaveResults";
 
@@ -58,9 +59,8 @@ const columns = [
           {row.results.map((result, index) => {
             result.scores.sort((a, b) => a.order - b.order);
             return result.scores.map((score, index) => (
-              <>
+              <Fragment key={score.id}>
                 <Col
-                  key={score.id}
                   span={
                     24 % result.scores.length === 0
                       ? 24 / result.scores.length
@@ -70,7 +70,7 @@ const columns = [
                   {score.points}
                 </Col>
                 {index === 4 ? <Col span={2}></Col> : null}
-              </>
+              </Fragment>
             ));
           })}
         </Row>
@@ -94,7 +94,12 @@ export const Results = ({ listPlayers, players, matches, createMatch }) => {
             players={players}
             createMatch={createMatch}
           />
-          <Table dataSource={matches} columns={columns} rowKey="id" />
+          <Table
+            dataSource={matches}
+            columns={columns}
+            rowKey="id"
+            data-testid="results-table"
+          />
         </Col>
       </Row>
     </>

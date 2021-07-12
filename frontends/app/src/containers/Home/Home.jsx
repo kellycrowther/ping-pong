@@ -102,6 +102,7 @@ export const Home = ({ createPlayer, rankedPlayers }) => {
               dataSource={players}
               columns={columns}
               rowKey="rank"
+              data-testid="player-rank-table"
             />
           </Col>
         </Row>
