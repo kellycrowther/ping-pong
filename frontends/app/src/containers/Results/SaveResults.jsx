@@ -65,6 +65,7 @@ export const SaveResults = ({ players, createMatch }) => {
             preserve={false}
             width={750}
           >
+            <p>*You can create players from the home page.</p>
             <Form
               name="basic"
               labelCol={{ span: 8 }}

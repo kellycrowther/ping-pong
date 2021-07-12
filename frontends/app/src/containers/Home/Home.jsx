@@ -62,7 +62,7 @@ export const Home = ({ createPlayer, rankedPlayers }) => {
         </Col>
       </Row>
       <Row>
-        <Col xs={24} style={{ textAlign: "center" }}>
+        <Col xs={24} style={{ textAlign: "left", padding: "10px 0px" }}>
           <Button type="primary" onClick={() => setIsModalVisible(true)}>
             Create Player
           </Button>

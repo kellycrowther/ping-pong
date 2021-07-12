@@ -57,11 +57,20 @@ const columns = [
           */}
           {row.results.map((result, index) => {
             result.scores.sort((a, b) => a.order - b.order);
-            return result.scores.map((score) => (
-              // TODO: span breaks at 5 games
-              <Col key={score.id} span={24 / result.scores.length}>
-                {score.points}
-              </Col>
+            return result.scores.map((score, index) => (
+              <>
+                <Col
+                  key={score.id}
+                  span={
+                    24 % result.scores.length === 0
+                      ? 24 / result.scores.length
+                      : 4
+                  }
+                >
+                  {score.points}
+                </Col>
+                {index === 4 ? <Col span={2}></Col> : null}
+              </>
             ));
           })}
         </Row>
@@ -79,6 +88,7 @@ export const Results = ({ listPlayers, players, matches, createMatch }) => {
       <Row justify="center">
         <Col xs={24} style={{ textAlign: "center" }}>
           <Title>Results</Title>
+          <p>*Begin recording results by clicking the Record Results button</p>
           <SaveResults
             listPlayers={listPlayers}
             players={players}
