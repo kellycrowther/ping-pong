@@ -27,8 +27,11 @@
 ## Areas for Improvement
 
 1. Validation for the Save Results form
-2. A game only counts as a win if you get 11 points, but nothing requires one of the game fields having 11 points
-3. Ranked players are ranked by the number of games won. It should probably rank by matches won, then games won, then points against
-4. User should be able to create a user from the Save Results form or the Results Page
-5. More tests
-6. Define more types throughout
+
+- Should add a game column, instead of adding each game for each player individually
+- A game only counts as a win if you get 11 points, but nothing requires one of the points fields of a game to have 11 points
+
+2. Ranked players are ranked by the number of games won. It should probably rank by matches won, then games won, then points against
+3. User should be able to create a user from the Save Results form or the Results Page
+4. More tests
+5. Define more types throughout
