@@ -8,7 +8,7 @@
 4. Once installation is complete, run `npm run start` to start the frontend app
 5. Go to `http://localhost:3000` in the browser to start using the app
 
-- There is no seeder for this project, so start by creating players on the home page. Navigate to the results page and begin saving results. As noted in the improved areas, a 'won' game must equal 11 points, otherwise it is not recorded as a win. Once scores are input, you can back to navigate to the home page to see the ranked players.
+- There is no seeder for this project, so start by creating players on the home page. Navigate to the results page and begin saving results. As noted in the Areas for Improvement section, a 'win' is a only recorded if the points in a game equal 11 points, otherwise it is not recorded as a win. Once scores are input, you can back to navigate to the home page to see the ranked players.
 
 ## About the project
 
@@ -32,6 +32,7 @@
 
 - Should add a game column, instead of adding each game for each player individually
 - A game only counts as a win if you get 11 points, but nothing requires one of the points fields of a game to have 11 points
+- Shouldn't be able to have both games have 11 points
 - Shouldn't be able to have negative points or points greater than 12
 - Shouldn't have more than 5 games; needs validation for best of 3 or best of 5
 
