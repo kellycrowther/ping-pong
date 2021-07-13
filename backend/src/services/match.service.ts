@@ -57,7 +57,7 @@ async function getMatch(id) {
   return match;
 }
 
-async function createInclude() {
+export async function createInclude() {
   return await [
     {
       model: db.Result,
