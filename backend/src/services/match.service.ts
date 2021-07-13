@@ -2,18 +2,20 @@ import { db } from "../db/index";
 import { createResult } from "./result.service";
 import { createScore } from "./score.service";
 
-export async function getAll() {
+export { getAll, getById, create, update, _delete };
+
+async function getAll() {
   const include = await createInclude();
   return await db.Match.findAll({
     include,
   });
 }
 
-export async function getById(id) {
+async function getById(id) {
   return await getMatch(id);
 }
 
-export async function create(params) {
+async function create(params) {
   const include = await createInclude();
 
   const match = await db.Match.create(params, {
@@ -31,7 +33,7 @@ export async function create(params) {
   return match.get();
 }
 
-export async function update(id, params) {
+async function update(id, params) {
   const match = await getMatch(id);
 
   Object.assign(match, params);
@@ -40,7 +42,7 @@ export async function update(id, params) {
   return match.get();
 }
 
-export async function _delete(id) {
+async function _delete(id) {
   const match = await getMatch(id);
   await match.destroy();
 }
@@ -57,7 +59,7 @@ async function getMatch(id) {
   return match;
 }
 
-export async function createInclude() {
+async function createInclude() {
   return await [
     {
       model: db.Result,
