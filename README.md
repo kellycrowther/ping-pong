@@ -40,3 +40,12 @@
 3. User should be able to create a user from the Save Results form or the Results Page
 4. More tests
 5. Define more types throughout
+
+## Deployment
+
+1. Navigate in to frontends/app and create a build: `npm run build`
+2. Copy the created build folder from the frontend directory to `backend/src`
+3. Commit the changed files to git
+4. Push the changes to Heroku: `git subtree push --prefix backend heroku master`
+
+- One option for deploying: https://www.freecodecamp.org/news/deploy-a-react-node-app-to/
