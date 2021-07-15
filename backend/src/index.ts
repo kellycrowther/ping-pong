@@ -6,7 +6,10 @@ const routes = require("./routes/index");
 const cors = require("cors");
 const errorHandler = require("./_middleware/error-handler");
 
-const { PORT } = process.env;
+const { PORT, NODE_ENV, STAGE } = process.env;
+
+console.info("NODE_ENV: ", NODE_ENV);
+console.info("STAGE: ", STAGE);
 
 const app = express();
 
